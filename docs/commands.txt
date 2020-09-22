@@ -1,0 +1,38 @@
+# TODO:
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
+aws --version
+npm install -g serverless
+aws sts get-caller-identity
+aws configure
+sls --version
+
+mkdir sls-course
+cd sls-course
+sls create --name auction-service --template-url https://github.com/codingly-io/sls-base
+cd auction-service/
+npm install
+sudo ntpdate pool.ntp.org
+
+
+# Deploy after changing .yaml files:
+sls depoy -v
+
+# Remove the deployment
+sls remove -v
+
+# Deploy afetr changing specific handler (createAuction in this case):
+sls deploy -f createAuction -v
+
+# tail the logs from processAuctions
+sls logs -f processAuctions -t
+
+# show all the logs from processAuctions
+sls logs -f processAuctions
+
+# show all the logs from processAuctions from last 3 minutes
+sls logs -f processAuctions --startTime 3m
+
+# invoke a function (execute)
+sls invoke -f processAuctions -l
