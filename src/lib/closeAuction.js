@@ -1,7 +1,7 @@
 import AWS from 'aws-sdk';
 
-const dynamodb = new AWS.DynamoDB.DocumentClient();
 
+const dynamodb = new AWS.DynamoDB.DocumentClient();
 const sqs = new AWS.SQS();
 
 export async function closeAuction(auction) {

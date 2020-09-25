@@ -7,7 +7,7 @@ const dynamoDb = new AWS.DynamoDB.DocumentClient();
 
 export async function getAuctionById(id) {
   let auction;
-  
+
   try {
     const result = await dynamoDb.get({
       TableName: process.env.AUCTIONS_TABLE_NAME,

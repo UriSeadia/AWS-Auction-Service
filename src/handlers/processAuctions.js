@@ -4,7 +4,7 @@ import { closeAuction } from '../lib/closeAuction';
 
 
 async function processAuctions(event, context) {
-  try {    
+  try {
     const auctionsToClose = await getEndedAuctions();
     const closePromises = auctionsToClose.map(auction => closeAuction(auction));
     await Promise.all(closePromises);
